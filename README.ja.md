@@ -1,7 +1,7 @@
 # cordova-line-login-plugin
-A cordova plugin for easy implementation of LINE login using LineSDK.　　
+LineSDKを使用してLINEログインを簡単に実装するためのcordovaプラグイン。　　
 
-The function login, logs out, acquires, verifies, and refreshes the access token. The version of LineSDK you are using is as follows.  
+機能はログイン、ログアウト、アクセストークンの取得・検証・リフレッシュを行う。使用しているLineSDKのバージョンは以下のとおり。  
 
 iOS：5.5.1  
 Android：5.3.1  
@@ -10,17 +10,17 @@ cordova >= 7.1.0
 cordova-ios >= 4.5.0  
 cordova-android >= 8.0.0  
 
-The flow until incorporation is as follows  
-Create a business account corresponding to LINE login from "LINE BUSINESS CENTER". Select NATIVE_APP for Application Type.
+組み込みまでの流れは以下の通り  
+「LINE BUSINESS CENTER」からLINEログインに対応したビジネスアカウントを作成。Application TypeはNATIVE_APPを選択。
 
 ### ios
-1. "IOS Bundle ID" "iOS Scheme" is set from "LINE DEVELOPERS".
-1. When using swift5, specify version in config.xml. (Default is swift4)
-1. Install this plugin
-1. Implementing the program
+1. 「LINE DEVELOPERS」より「iOS Bundle ID」「iOS Scheme」を設定。
+1. swift5を使用する場合、config.xmlにバージョン指定（デフォルトはswift4）
+1. 当プラグインをインストール。
+1. プログラムの実装
 
 ```
-example)When using swift5
+例)swift5を使用する場合
 config.xml  
 <platform name="ios">
   <preference name="UseSwiftLanguageVersion" value="5" />
@@ -28,12 +28,12 @@ config.xml
 ```
 
 ### android
-1. "Android Package Name" "Android Package Signature" "Android Scheme" is set from "LINE DEVELOPERS"
-1. Install this plugin
-1. Implementing the program
+1. 「LINE DEVELOPERS」より「Android Package Name」「Android Package Signature」「Android Scheme」を設定。
+1. 当プラグインをインストール。
+1. プログラムの実装
 
 ```
-example)  
+例)  
 Android Package Name : com.example.sample
 Android Package Signature : 11:22:33:44:55:66:77:88:99:aa:bb:cc:dd:ee:ff:gg:hh:ii:jj:kk
 Android Scheme : com.example.sample://
@@ -43,14 +43,17 @@ Android Scheme : com.example.sample://
 https://github.com/akofman/cordova-plugin-add-swift-support  
 
 ## Installation
+```
 cordova plugin add cordova-line-login-plugin
+```
 
 ## Supported Platforms
-- iOS
+- iOS (>=10.0)
 - Android
 
 ## LINE SDK
-This plugin use the SDKs provided by LINE. More information about these in their documentation for [iOS](https://developers.line.me/ja/docs/ios-sdk/) or [Android](https://developers.line.me/ja/docs/android-sdk/)
+このプラグインはLINEが提供するSDKを使用しています。これらの詳細はドキュメントを確認下さい。[iOS](https://developers.line.me/ja/docs/ios-sdk/) or 
+[Android](https://developers.line.me/ja/docs/android-sdk/)
 
 ## Usage
 
@@ -125,19 +128,19 @@ function onLineRefreshAccessToken() {
 }
 ```
 
-If you want to use it with ionic, please refer to the [ionic-native documentation](https://ionicframework.com/docs/native/line-login).
+ionicで使う場合は、[ionic-nativeのドキュメント](https://ionicframework.com/docs/native/line-login)を参考にしてください。
 
 ### Error Code
-error callback returns an error of the form 　
+errorコールバックでは以下の形式のエラーを返します
 ```
 {
-  code: -1: Invalid parameter, -2:SDK returned an error, -3: Unknown error
-  sdkErrorCode: Error code returned by SDK
-  description: Error message
+  code: -1: パラメータが不正です, -2:SDKがエラーを返しました, -3: 不明なエラー
+  sdkErrorCode: SDKの返すエラーコード
+  description: エラーメッセージ
 }
 ```
 
-## use in capacitors
+## capacitorで使うには
 
 ### install
 ```
@@ -146,8 +149,8 @@ $ npm install cordova-line-login-plugin
 
 ### iOS configuration
 
-Overwrite AppDelegate and info.plist in capcitor or add value Please take the following actions as I have not found a way to do so.  
-Please note that you will have to deal with this every time you recreate the ios directory.  
+capcitorでAppDelegateとinfo.plistを上書きまたは値を追加する方法が見つからないため以下の対応をしてください。   
+iosディレクトリを作り直すたびに対応が必要となるためご注意ください。  
 
 In file ios/App/App/AppDelegate.swift add or replace the following:
 ```
@@ -181,4 +184,3 @@ Add the following in the ios/App/App/info.plist file:
 +     <string>lineauth2</string>
 + </array>
 ```
-
